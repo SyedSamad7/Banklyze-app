@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class AnalyzeScreen extends StatefulWidget {
   const AnalyzeScreen({super.key});
@@ -36,13 +37,53 @@ class _AnalyzeScreenState extends State<AnalyzeScreen> {
                   ),
                   const SizedBox(
                     width: 15,
-                  )
+                  ),
                 ],
               ),
+              Container(
+                  height: 200,
+                  color: Colors.white,
+                  child: const AnalyzeChart()),
             ],
           ),
         ),
       ),
     );
   }
+}
+
+class AnalyzeChart extends StatelessWidget {
+  const AnalyzeChart({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return LineChart(LineChartData(
+        minX: 0,
+        maxX: 16,
+        minY: 0,
+        maxY: 1000,
+        titlesData: Titles.getFlTitles(),
+        ));
+  }
+}
+
+class Titles {
+  static FlTitlesData getFlTitles() => FlTitlesData(
+        bottomTitles: AxisTitles(
+          sideTitles: SideTitles(
+            showTitles: true,
+            reservedSize: 20,
+            // getTitlesWidget: _bottomTitles,
+          ),
+        ),
+        leftTitles: AxisTitles(
+          axisNameSize: 25,
+          axisNameWidget: SizedBox(),
+          sideTitles: SideTitles(
+            reservedSize: 60,
+            showTitles: true,
+            // getTitlesWidget: _leftTitles,
+          ),
+        ),
+      );
 }
