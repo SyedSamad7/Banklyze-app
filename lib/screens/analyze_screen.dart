@@ -42,7 +42,7 @@ class _AnalyzeScreenState extends State<AnalyzeScreen> {
               ),
               Container(
                   height: 200,
-                  color: Colors.white,
+                  // color: Colors.white,
                   child: const AnalyzeChart()),
             ],
           ),
@@ -63,25 +63,60 @@ class AnalyzeChart extends StatelessWidget {
         minY: 0,
         maxY: 1000,
         titlesData: Titles.getFlTitles(),
-        ));
+        gridData: const FlGridData(show: false),
+        borderData: FlBorderData(
+          show: false,
+        ),
+        lineBarsData: [
+          LineChartBarData(
+              isCurved: true,
+              show: true,
+              gradient: const LinearGradient(
+                colors: [Color(0xffD41E7F), Color(0xff6226CD)],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ))
+        ]));
   }
 }
 
 class Titles {
-  static FlTitlesData getFlTitles() => FlTitlesData(
+  static FlTitlesData getFlTitles() => const FlTitlesData(
         bottomTitles: AxisTitles(
+          axisNameWidget: SizedBox(),
+          axisNameSize: 12,
           sideTitles: SideTitles(
+            maxIncluded: true,
+            minIncluded: true,
             showTitles: true,
-            reservedSize: 20,
+            reservedSize: 25,
             // getTitlesWidget: _bottomTitles,
           ),
         ),
-        leftTitles: AxisTitles(
-          axisNameSize: 25,
+        topTitles: AxisTitles(
+          axisNameSize: 0,
           axisNameWidget: SizedBox(),
           sideTitles: SideTitles(
-            reservedSize: 60,
-            showTitles: true,
+            reservedSize: 20,
+            showTitles: false,
+            // getTitlesWidget: _leftTitles,
+          ),
+        ),
+        rightTitles: AxisTitles(
+          axisNameSize: 8,
+          axisNameWidget: SizedBox(),
+          sideTitles: SideTitles(
+            reservedSize: 20,
+            showTitles: false,
+            // getTitlesWidget: _leftTitles,
+          ),
+        ),
+        leftTitles: AxisTitles(
+          axisNameSize: 6,
+          axisNameWidget: SizedBox(),
+          sideTitles: SideTitles(
+            reservedSize: 20,
+            showTitles: false,
             // getTitlesWidget: _leftTitles,
           ),
         ),
