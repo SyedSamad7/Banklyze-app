@@ -82,17 +82,17 @@ class AnalyzeChart extends StatelessWidget {
 
 class Titles {
   static FlTitlesData getFlTitles() => const FlTitlesData(
-        bottomTitles: AxisTitles(
-          axisNameWidget: SizedBox(),
-          axisNameSize: 12,
-          sideTitles: SideTitles(
-            maxIncluded: true,
-            minIncluded: true,
-            showTitles: true,
-            reservedSize: 25,
-            // getTitlesWidget: _bottomTitles,
-          ),
-        ),
+        // bottomTitles: AxisTitles(
+        //   axisNameWidget: SizedBox(),
+        //   axisNameSize: 12,
+        //   sideTitles: SideTitles(
+        //     maxIncluded: true,
+        //     minIncluded: true,
+        //     showTitles: true,
+        //     reservedSize: 25,
+        //     // getTitlesWidget: _bottomTitles,
+        //   ),
+        // ),
         topTitles: AxisTitles(
           axisNameSize: 0,
           axisNameWidget: SizedBox(),
