@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:banklyze_app/models/horizontal_card_model.dart';
 import 'package:banklyze_app/models/social_apps_model.dart';
 import 'package:banklyze_app/screens/analyze_screen.dart';
+import 'package:banklyze_app/screens/bank_card_screen.dart';
 import 'package:banklyze_app/widgets/horizantal_cards_column.dart';
 import 'package:banklyze_app/widgets/social_app_card.dart';
 import 'package:flutter/material.dart';
@@ -60,15 +61,21 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      height: 230,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(40),
-                          border: Border.all(
-                              width: 4, color: const Color(0xff311f60)),
-                          image: const DecorationImage(
-                              image: AssetImage('assets/images/pinkCard.png'),
-                              fit: BoxFit.cover)),
+                    InkWell(
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const BankCardScreen())),
+                      child: Container(
+                        height: 230,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40),
+                            border: Border.all(
+                                width: 4, color: const Color(0xff311f60)),
+                            image: const DecorationImage(
+                                image: AssetImage('assets/images/pinkCard.png'),
+                                fit: BoxFit.cover)),
+                      ),
                     ),
                     const SizedBox(
                       height: 20,
@@ -113,7 +120,7 @@ class HomeScreen extends StatelessWidget {
                           'Transaction details',
                           style: TextStyle(
                               fontFamily: 'rubik',
-                              fontSize: 16,
+                              fontSize: 20,
                               fontWeight: FontWeight.w800,
                               color: Color(0xffFFFFFF)),
                         ),

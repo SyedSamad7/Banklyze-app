@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fl_chart/fl_chart.dart';
 
+import '../models/social_apps_model.dart';
+import '../widgets/social_app_card.dart';
+
 class AnalyzeScreen extends StatefulWidget {
   const AnalyzeScreen({super.key});
 
@@ -14,34 +17,90 @@ class _AnalyzeScreenState extends State<AnalyzeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    onTap: () => Navigator.pop(context),
-                    child: SvgPicture.asset(
-                      'assets/images/arrowLeftIcon.svg',
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    InkWell(
+                      onTap: () => Navigator.pop(context),
+                      child: SvgPicture.asset(
+                        'assets/images/arrowLeftIcon.svg',
+                      ),
                     ),
-                  ),
-                  const Text(
-                    'Analyze',
-                    style: TextStyle(
-                        fontFamily: 'rubik',
-                        fontSize: 24,
-                        fontWeight: FontWeight.w800,
-                        color: Color(0xffFFFFFF)),
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                ],
-              ),
-              Container(height: 200, child: const AnalyzeChart()),
-            ],
+                    const Text(
+                      'Analyze',
+                      style: TextStyle(
+                          fontFamily: 'rubik',
+                          fontSize: 24,
+                          fontWeight: FontWeight.w800,
+                          color: Color(0xffFFFFFF)),
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 200, child: AnalyzeChart()),
+                const SizedBox(height: 30),
+                const Text(
+                  'Total balance',
+                  style: TextStyle(
+                      color: Color(0xffB9B2C4),
+                      fontFamily: 'rubik',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400),
+                ),
+                const SizedBox(
+                  height: 6,
+                ),
+                const Text(
+                  '\$1.924,35',
+                  style: TextStyle(
+                      color: Color(0xffFFFFFF),
+                      fontFamily: 'rubik',
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 32,
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Transaction details',
+                      style: TextStyle(
+                          fontFamily: 'rubik',
+                          fontSize: 20,
+                          fontWeight: FontWeight.w800,
+                          color: Color(0xffFFFFFF)),
+                    ),
+                    Text(
+                      'View All',
+                      style: TextStyle(
+                          fontFamily: 'rubik',
+                          fontSize: 16,
+                          color: Color(0xffB9B2C4),
+                          fontWeight: FontWeight.w400),
+                    )
+                  ],
+                ),
+                ListView.builder(
+                  itemCount: socialApps.length,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  itemBuilder: (context, index) {
+                    final socilApp = socialApps[index];
+                    return SocialAppCard(socialApp: socilApp);
+                  },
+                )
+              ],
+            ),
           ),
         ),
       ),
