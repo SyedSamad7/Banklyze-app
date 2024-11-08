@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Hallo',
+                              'Hello',
                               style: TextStyle(
                                   fontFamily: 'robik',
                                   color: Color(0xffFFFFFF),
